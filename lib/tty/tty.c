@@ -323,6 +323,17 @@ tty_resize (int fd)
 
 /* --------------------------------------------------------------------------------------------- */
 
+/** Clear screen */
+void
+tty_clear_screen (void)
+{
+    tty_set_normal_attrs ();
+    tty_fill_region (0, 0, LINES, COLS, ' ');
+    tty_refresh ();
+}
+
+/* --------------------------------------------------------------------------------------------- */
+
 void
 tty_init_xterm_support (gboolean is_xterm)
 {
